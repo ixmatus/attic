@@ -243,6 +243,9 @@ async fn run_reap_orphan_chunks(state: &State) -> Result<()> {
         .map(|r| r.unwrap())
         .collect();
 
+    println!("{}", deleted_chunk_ids.len());
+    println!("{:?}", deleted_chunk_ids);
+
     // Finally, delete them from the database
     let deletion = Chunk::delete_many()
         .filter(chunk::Column::Id.is_in(deleted_chunk_ids))
