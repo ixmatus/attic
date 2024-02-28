@@ -196,7 +196,7 @@ async fn run_reap_orphan_chunks(state: &State) -> Result<()> {
         db.get_database_backend().build(&change_state)
     };
 
-    println!(query.to_string(transition_statement))
+    println!("{}", transition_statement.to_string());
 
     db.execute(transition_statement).await?;
 
